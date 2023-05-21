@@ -1,0 +1,140 @@
+body {
+  background-color: #2b2b2b;
+  margin: 25px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+header #logo {
+  width: 70%;
+  margin-bottom: 10px;
+}
+
+header .stats-container {
+  color: #f4f4f4;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: end;
+  display: flex;
+}
+
+header h3 {
+  font-size: 14px;
+}
+
+header p {
+  color: #1e1e1e;
+  background-color: #f4f4f4;
+  border-radius: 3px;
+  padding: 3px 0;
+  font-weight: bold;
+}
+
+.form-button {
+  text-align: center;
+}
+
+.form-button button {
+  color: #f4f4f4;
+  background-color: #c25c22;
+  border-radius: 6px;
+  margin-bottom: 30px;
+  padding: 8px 20px;
+  font-size: 15px;
+  font-weight: bold;
+}
+
+.form {
+  background-color: #e99c65;
+  border-radius: 6px;
+  margin-bottom: 50px;
+  padding: 10px 15px;
+}
+
+.form h2 {
+  margin: 0 0 20px;
+  font-size: 16px;
+}
+
+.form .input-container {
+  flex-direction: column;
+  margin-bottom: 20px;
+  padding-left: 10px;
+  display: flex;
+}
+
+.form .input-container label {
+  font-size: 15px;
+}
+
+.form .input-container input {
+  height: 25px;
+  background-color: #f4f4f4;
+  border: none;
+  border-radius: 4px;
+}
+
+.form .input-title {
+  margin-bottom: 10px;
+}
+
+.form .input-title input {
+  width: 170px;
+  margin-left: 20px;
+}
+
+.form .input-rating input {
+  width: 80px;
+  margin-left: 4px;
+}
+
+.form .form-button-container {
+  text-align: right;
+}
+
+.form .form-button-container button {
+  border: none;
+  border-radius: 3px;
+  padding: 5px 12px;
+  font-weight: bold;
+}
+
+.form .form-button-container .add-button {
+  color: #f4f4f4;
+  background-color: #c25c22;
+  margin-left: 8px;
+}
+
+main {
+  text-align: center;
+  color: #f4f4f4;
+}
+
+main h2 {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+main .watched-movies {
+  height: 300px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  display: flex;
+}
+
+main .watched-movies .movie-poster {
+  height: 170px;
+  width: 120px;
+  object-fit: cover;
+}
+
+main .watched-movies h4 {
+  margin-top: 3px;
+  font-size: 13px;
+}
+
+/*# sourceMappingURL=index.99ca2063.css.map */
