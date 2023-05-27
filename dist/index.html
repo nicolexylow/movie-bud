@@ -9,54 +9,105 @@
     <title>MovieBud</title>
 </head>
 <body>
-    <header>
-        <img id="logo" src="/logo.f0c67fd0.png" alt="Logo">
-
-        <div class="stats-container">
-            <div class="num-movies">
-                <h3>Movies watched</h3>
-                <p>0</p>
+    <!-- MAIN PAGE -->
+    <!-- remember to add class='active' -->
+    <section id="main-page" data-page-content="" class="active">
+        <header>
+            <img id="logo" src="/logo.f0c67fd0.png" alt="Logo">
+    
+            <div class="stats-container">
+                <div class="num-movies">
+                    <h3>Movies watched</h3>
+                    <p>0</p>
+                </div>
+    
+                <div class="watch-time">
+                    <h3>Total watch time <br> (minutes)</h3>
+                    <p>0</p>
+                </div>
             </div>
-
-            <div class="watch-time">
-                <h3>Total watch time <br> (minutes)</h3>
-                <p>0</p>
-            </div>
+        </header>
+    
+        <!-- <div class="form-button">
+            <button>Add a movie</button>
+        </div> -->
+    
+        <div class="form">
+            <h2>Add a movie</h2>
+            <form>
+                <div class="input-container">
+                    <label class="input-title">
+                        Title
+                        <input type="text" name="title" required="">
+                    </label>
+                    
+                    <label class="input-rating">
+                        Rating
+                        <input type="number" name="rating" required="">
+                    </label>
+                </div>
+    
+                <div class="form-button-container">
+                    <button type="button" class="cancel-button">Cancel</button>
+                    <button class="add-button">Add</button>
+                </div>
+            </form>
         </div>
-    </header>
-
-    <!-- <div class="form-button">
-        <button>Add a movie</button>
-    </div> -->
-
-    <div class="form">
-        <h2>Add a movie</h2>
-        <form>
-            <div class="input-container">
-                <label class="input-title">
-                    Title
-                    <input type="text" name="title" required="">
-                </label>
-                
-                <label class="input-rating">
-                    Rating
-                    <input type="number" name="rating" required="">
-                </label>
-            </div>
-            
-
-            <div class="form-button-container">
-                <button type="button" class="cancel-button">Cancel</button>
-                <button class="add-button">Add</button>
-            </div>
-            
-        </form>
-    </div>
+        
+        
+        <main>
+            <h2>Movies previously watched</h2>
+            <div class="watched-movies"></div>
+        </main>
+    </section>
     
-    
-    <main>
-        <h2>Movies previously watched</h2>
-        <div class="watched-movies"></div>
-    </main>
+    <!-- SHOW PAGE -->
+    <!-- remember to remove class='active' -->
+    <section id="show-page" data-page-content="">  
+        <header>
+            <img id="logo" src="/logo.f0c67fd0.png" alt="Logo">
+        </header>
+
+        <main>
+            <figure class="img-title"></figure>
+
+            <div class="content-container">
+                <div class="rating">
+                    <h3>Rating</h3>
+                    <p></p>
+                </div>
+
+                <div class="genre">
+                    <h3>Genre</h3>
+                    <p></p>
+                </div>
+
+                <div class="release-date">
+                    <h3>Release Date</h3>
+                    <p></p>
+                </div>
+
+                <div class="director">
+                    <h3>Director</h3>
+                    <p></p>
+                </div>
+
+                <div class="rated">
+                    <h3>Rated</h3>
+                    <p></p>
+                </div>
+
+                <div class="duration">
+                    <h3>Duration (minutes)</h3>
+                    <p></p>
+                </div>
+
+                <div class="plot">
+                    <h3>Plot</h3>
+                    <p></p>
+                </div>
+            </div>  
+        </main>
+    </section>
 </body>
 </html>

@@ -4,139 +4,158 @@ body {
     margin: 25px 20px;
 }
 
-header {
-    text-align: center;
-    margin-bottom: 30px;
-
-    #logo {
-        width: 70%;
-        margin-bottom: 10px;
-    }
-
-    .stats-container {
-        color: #F4F4F4;
-        display: flex;
-        flex-direction: row;
-        justify-content: space-evenly;
-        align-items: end;
-    }
-
-    h3 {
-        font-size: 14px;
-    }
-
-    p {
-        color: #1E1E1E;
-        background-color: #F4F4F4;
-        padding: 3px 0;
-        border-radius: 3px;
-        font-weight: bold;
-    }
+/* based on which page is active, it shows the correct content */
+[data-page-content] {
+    display: none;
 }
 
-.form-button {
-    text-align: center;
+.active[data-page-content] {
+    display: block;
+}
 
-    button {
-        padding: 8px 20px;
-        font-size: 15px;
-        font-weight: bold;
-        border-radius: 6px;
-        background-color: #C25C22;
-        color: #F4F4F4;
+#logo {
+    width: 70%;
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 14px;
+}
+
+#main-page {
+    header {
+        text-align: center;
         margin-bottom: 30px;
-    }
-}
-
-.form {
-    background-color: #E99C65;
-    border-radius: 6px;
-    padding: 10px 15px;
-    margin-bottom: 50px;
-
-    h2 {
-        font-size: 16px;
-        margin: 0 0 20px 0;
-    }
-
-    .input-container {
-        display: flex;
-        flex-direction: column;
-        margin-bottom: 20px;
-        padding-left: 10px;
-
-        label {
-            font-size: 15px;
+    
+        .stats-container {
+            color: #F4F4F4;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-evenly;
+            align-items: end;
         }
-
-        input {
-            height: 25px;
-            border: none;
-            border-radius: 4px;
+    
+        p {
+            color: #1E1E1E;
             background-color: #F4F4F4;
-        }
-    }
-
-    .input-title {
-        margin-bottom: 10px;
-
-        input {
-            margin-left: 20px;
-            width: 170px;
-        }
-    }
-
-    .input-rating {
-        input {
-            margin-left: 4px;
-            width: 80px;
-        }
-    }
-
-    .form-button-container {
-        text-align: right;
-
-        button {
-            padding: 5px 12px;
-            font-weight: bold;
-            border: none;
+            padding: 3px 0;
             border-radius: 3px;
+            font-weight: bold;
         }
-
-        .add-button {
+    }
+    
+    .form-button {
+        text-align: center;
+    
+        button {
+            padding: 8px 20px;
+            font-size: 15px;
+            font-weight: bold;
+            border-radius: 6px;
             background-color: #C25C22;
             color: #F4F4F4;
-            margin-left: 8px;
+            margin-bottom: 30px;
+        }
+    }
+    
+    .form {
+        background-color: #E99C65;
+        border-radius: 6px;
+        padding: 10px 15px;
+        margin-bottom: 50px;
+    
+        h2 {
+            font-size: 16px;
+            margin: 0 0 20px 0;
+        }
+    
+        .input-container {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 20px;
+            padding-left: 10px;
+    
+            label {
+                font-size: 15px;
+            }
+    
+            input {
+                height: 25px;
+                border: none;
+                border-radius: 4px;
+                background-color: #F4F4F4;
+            }
+        }
+    
+        .input-title {
+            margin-bottom: 10px;
+    
+            input {
+                margin-left: 20px;
+                width: 170px;
+            }
+        }
+    
+        .input-rating {
+            input {
+                margin-left: 4px;
+                width: 80px;
+            }
+        }
+    
+        .form-button-container {
+            text-align: right;
+    
+            button {
+                padding: 5px 12px;
+                font-weight: bold;
+                border: none;
+                border-radius: 3px;
+            }
+    
+            .add-button {
+                background-color: #C25C22;
+                color: #F4F4F4;
+                margin-left: 8px;
+            }
+            
         }
         
     }
     
+    main {
+        text-align: center;
+        color: #F4F4F4;
+    
+        h2 {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+    
+        .watched-movies {
+            height: 300px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+    
+            .movie-poster {
+                height: 170px;
+                width: 120px;
+                object-fit: cover;
+            }
+    
+            h4 {
+                font-size: 13px;
+                margin-top: 3px;
+            }
+        }
+    }
 }
 
-main {
-    text-align: center;
-    color: #F4F4F4;
-
-    h2 {
-        font-size: 16px;
-        margin-bottom: 20px;
-    }
-
-    .watched-movies {
-        height: 300px;
-        display: flex;
-        justify-content: space-between;
-        flex-wrap: wrap;
-
-        .movie-poster {
-            height: 170px;
-            width: 120px;
-            object-fit: cover;
-        }
-
-        h4 {
-            font-size: 13px;
-            margin-top: 3px;
-        }
+#show-page {
+    header {
+        text-align: center;
     }
 }
+
+

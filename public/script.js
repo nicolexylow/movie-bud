@@ -3,7 +3,7 @@ window.addEventListener('load', () => {
 })
 
 // API IMPLEMENTATION
-const getApiResponse = (movieTitle) => {
+const getApiResponse = (movieTitle, ratingInput) => {
     const apiKey = '3defedc0' 
     const baseUrl = 'http://www.omdbapi.com/'
     const url = `${baseUrl}?apikey=${apiKey}&t=${encodeURIComponent(movieTitle)}`
@@ -28,7 +28,7 @@ const getApiResponse = (movieTitle) => {
         }
 
         localStorage.setItem('movies', JSON.stringify(movies))
-        updateMovies()        
+        updateMovies(ratingInput)        
     })
     .catch(error => {
         console.error('Error:', error)
@@ -44,13 +44,13 @@ form.addEventListener('submit', (event) => {
     event.preventDefault()
 
     const title = document.querySelector('input[name="title"]').value
-    const rating = document.querySelector('input[name="rating"]').value
+    const ratingInput = document.querySelector('input[name="rating"]').value
 
-    getApiResponse(title)
+    getApiResponse(title, ratingInput)
     form.reset()
 })
 
-const updateMovies = () => {
+const updateMovies = (ratingInput) => {
     const movies = JSON.parse(localStorage.getItem('movies'))
     const watchedMovies = document.querySelector('.watched-movies')
     watchedMovies.innerHTML = ''
@@ -68,8 +68,11 @@ const updateMovies = () => {
             const div = document.createElement('div')
             div.setAttribute('id', id)
 
+            // creates a new image and title
             const img = document.createElement('img')
             img.classList.add('movie-poster')
+            img.setAttribute('data-movie-target', '#show-page')
+            img.classList.add('active')
             img.src = movie.Poster
             img.alt = `${movie.Title} poster`
 
@@ -80,10 +83,48 @@ const updateMovies = () => {
             div.appendChild(title)
             watchedMovies.appendChild(div)
 
+                     
             // click on the movie to go to its show page
+            const pageContents = document.querySelectorAll('[data-page-content]')   
+
             img.addEventListener('click', (event) => {
                 console.log(`clicked ${movie.Title}`)
+                const target = document.querySelector(img.dataset.movieTarget)
+
+                pageContents.forEach((page) => {
+                    page.classList.remove('active')
+                })
+
+                target.classList.add('active')
+
+                // specific show page based on the movie clicked
+                const posterImg = document.querySelector('#show-page .img-title')
+                const imgPoster = document.createElement('img')
+                imgPoster.src = movie.Poster
+                imgPoster.alt = `${movie.Title} Poster`
+                const figcaption = document.createElement('figcaption')
+                figcaption.innerHTML = movie.Title
+                posterImg.appendChild(imgPoster)
+                posterImg.appendChild(figcaption)
+
+                const rating = document.querySelector('#show-page .rating p')
+                const genre = document.querySelector('#show-page .genre p')
+                const releaseDate = document.querySelector('#show-page .release-date p')
+                const director = document.querySelector('#show-page .director p')
+                const rated = document.querySelector('#show-page .rated p')
+                const duration = document.querySelector('#show-page .duration p')
+                const plot = document.querySelector('#show-page .plot p')
+
+                rating.innerHTML = `${ratingInput}`
+                genre.innerHTML = movie.Genre
+                releaseDate.innerHTML = movie.Released
+                director.innerHTML = movie.Director
+                rated.innerHTML = movie.Rated
+                duration.innerHTML = movie.Runtime
+                plot.innerHTML = movie.Plot
             })
+
+            
 
         })
     }
