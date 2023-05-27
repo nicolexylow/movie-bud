@@ -3,7 +3,7 @@ window.addEventListener('load', () => {
 })
 
 // API IMPLEMENTATION
-const getApiResponse = (movieTitle, ratingInput) => {
+const getApiResponse = (movieTitle, rating) => {
     const apiKey = '3defedc0' 
     const baseUrl = 'http://www.omdbapi.com/'
     const url = `${baseUrl}?apikey=${apiKey}&t=${encodeURIComponent(movieTitle)}`
@@ -19,6 +19,7 @@ const getApiResponse = (movieTitle, ratingInput) => {
     .then((data) => {
         // output the data to the watched movies list
         console.log(data)
+        data.Rating = rating
         let movies = JSON.parse(localStorage.getItem('movies'))
 
         if (movies == null) {
@@ -28,7 +29,8 @@ const getApiResponse = (movieTitle, ratingInput) => {
         }
 
         localStorage.setItem('movies', JSON.stringify(movies))
-        updateMovies(ratingInput)        
+
+        updateMovies()        
     })
     .catch(error => {
         console.error('Error:', error)
@@ -44,13 +46,13 @@ form.addEventListener('submit', (event) => {
     event.preventDefault()
 
     const title = document.querySelector('input[name="title"]').value
-    const ratingInput = document.querySelector('input[name="rating"]').value
+    const rating = document.querySelector('input[name="rating"]').value
 
-    getApiResponse(title, ratingInput)
+    getApiResponse(title, rating)
     form.reset()
 })
 
-const updateMovies = (ratingInput) => {
+const updateMovies = () => {
     const movies = JSON.parse(localStorage.getItem('movies'))
     const watchedMovies = document.querySelector('.watched-movies')
     watchedMovies.innerHTML = ''
@@ -88,6 +90,8 @@ const updateMovies = (ratingInput) => {
             const pageContents = document.querySelectorAll('[data-page-content]')   
 
             img.addEventListener('click', (event) => {
+
+                
                 console.log(`clicked ${movie.Title}`)
                 const target = document.querySelector(img.dataset.movieTarget)
 
@@ -100,6 +104,10 @@ const updateMovies = (ratingInput) => {
                 // specific show page based on the movie clicked
                 const posterImg = document.querySelector('#show-page .img-title')
                 const imgPoster = document.createElement('img')
+
+                // delete the previous append to parent HTML element
+                posterImg.innerHTML = ''
+
                 imgPoster.src = movie.Poster
                 imgPoster.alt = `${movie.Title} Poster`
                 const figcaption = document.createElement('figcaption')
@@ -115,13 +123,75 @@ const updateMovies = (ratingInput) => {
                 const duration = document.querySelector('#show-page .duration p')
                 const plot = document.querySelector('#show-page .plot p')
 
-                rating.innerHTML = `${ratingInput}`
+                rating.innerHTML = movie.Rating
                 genre.innerHTML = movie.Genre
                 releaseDate.innerHTML = movie.Released
                 director.innerHTML = movie.Director
                 rated.innerHTML = movie.Rated
                 duration.innerHTML = movie.Runtime
                 plot.innerHTML = movie.Plot
+
+                // cancel and delete button functions
+                const cancelBtn = document.querySelector('#show-page .cancel-btn')
+                const deleteBtn = document.querySelector('#show-page .delete-btn')
+
+                cancelBtn.addEventListener('click', () => {
+                    pageContents.forEach((page) => {
+                        page.classList.remove('active')
+                    })
+
+                    const mainPage = document.querySelector('#main-page')
+                    mainPage.classList.add('active')
+                })
+
+                deleteBtn.addEventListener('click', () => {
+
+                    const deleteModal = document.querySelector('#delete-modal')
+                    deleteModal.classList.add('active')
+
+                    const buttonContainer = document.querySelector('#show-page .button-container')
+
+                    buttonContainer.classList.add('active')
+
+
+                    // delete confirmation modal
+                    const confirmBtn = document.querySelector('#delete-modal .confirm-btn')
+
+                    confirmBtn.addEventListener('click', () => {
+                        pageContents.forEach((page) => {
+                            page.classList.remove('active')
+                        })
+
+                        const modal = document.querySelector('#delete-modal')
+                        modal.classList.remove('active')
+
+                        const mainPage = document.querySelector('#main-page')
+                        mainPage.classList.add('active')
+
+                        const movies = JSON.parse(localStorage.getItem('movies'))
+
+                        // Find the index of the movie to be removed
+                        const movieIndex = movies.findIndex(movieItem => movieItem.Title === movie.Title)
+
+                        if (movieIndex !== -1) {
+                            // Remove the movie from the array
+                            movies.splice(movieIndex, 1)
+                            localStorage.setItem('movies', JSON.stringify(movies))
+                            updateMovies()
+                        }
+                    })
+
+                    const cancelBtn = document.querySelector('#delete-modal .cancel-btn')
+
+                    cancelBtn.addEventListener('click', () => {
+                        buttonContainer.classList.remove('active')
+
+                        const modal = document.querySelector('#delete-modal')
+                        modal.classList.remove('active')
+                    })
+
+                    
+                })
             })
 
             
