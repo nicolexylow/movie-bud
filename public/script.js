@@ -18,19 +18,21 @@ const getApiResponse = (movieTitle, rating) => {
     })
     .then((data) => {
         // output the data to the watched movies list
-        console.log(data)
         data.Rating = rating
         let movies = JSON.parse(localStorage.getItem('movies'))
 
         if (movies == null) {
             movies = [data]
         } else {
-            movies.push(data)
-        }
-
+            if (movies.some(movie => movie.Title === data.Title)) {
+                console.log('includes');
+            } else {
+                movies.push(data)
+            }
+        } 
+        
         localStorage.setItem('movies', JSON.stringify(movies))
-
-        updateMovies()        
+        updateMovies() 
     })
     .catch(error => {
         console.error('Error:', error)
@@ -90,8 +92,6 @@ const updateMovies = () => {
             const pageContents = document.querySelectorAll('[data-page-content]')   
 
             img.addEventListener('click', (event) => {
-
-                
                 console.log(`clicked ${movie.Title}`)
                 const target = document.querySelector(img.dataset.movieTarget)
 
@@ -131,69 +131,10 @@ const updateMovies = () => {
                 duration.innerHTML = movie.Runtime
                 plot.innerHTML = movie.Plot
 
-                // cancel and delete button functions
-                const cancelBtn = document.querySelector('#show-page .cancel-btn')
-                const deleteBtn = document.querySelector('#show-page .delete-btn')
-
-                cancelBtn.addEventListener('click', () => {
-                    pageContents.forEach((page) => {
-                        page.classList.remove('active')
-                    })
-
-                    const mainPage = document.querySelector('#main-page')
-                    mainPage.classList.add('active')
-                })
-
-                deleteBtn.addEventListener('click', () => {
-
-                    const deleteModal = document.querySelector('#delete-modal')
-                    deleteModal.classList.add('active')
-
-                    const buttonContainer = document.querySelector('#show-page .button-container')
-
-                    buttonContainer.classList.add('active')
-
-
-                    // delete confirmation modal
-                    const confirmBtn = document.querySelector('#delete-modal .confirm-btn')
-
-                    confirmBtn.addEventListener('click', () => {
-                        pageContents.forEach((page) => {
-                            page.classList.remove('active')
-                        })
-
-                        const modal = document.querySelector('#delete-modal')
-                        modal.classList.remove('active')
-
-                        const mainPage = document.querySelector('#main-page')
-                        mainPage.classList.add('active')
-
-                        const movies = JSON.parse(localStorage.getItem('movies'))
-
-                        // Find the index of the movie to be removed
-                        const movieIndex = movies.findIndex(movieItem => movieItem.Title === movie.Title)
-
-                        if (movieIndex !== -1) {
-                            // Remove the movie from the array
-                            movies.splice(movieIndex, 1)
-                            localStorage.setItem('movies', JSON.stringify(movies))
-                            updateMovies()
-                        }
-                    })
-
-                    const cancelBtn = document.querySelector('#delete-modal .cancel-btn')
-
-                    cancelBtn.addEventListener('click', () => {
-                        buttonContainer.classList.remove('active')
-
-                        const modal = document.querySelector('#delete-modal')
-                        modal.classList.remove('active')
-                    })
-
-                    
-                })
+                
             })
 
+            controls(movie, pageContents)
             
 
         })
@@ -203,4 +144,78 @@ const updateMovies = () => {
     const watchTimeCounter = document.querySelector('.watch-time p')
     moviesWatchedCounter.innerHTML = moviesWatched
     watchTimeCounter.innerHTML = watchTime
+}
+
+const controls = (movie, pageContents) => {
+    // cancel and delete button functions
+
+    const buttonContainer = document.querySelector('#show-page .button-container')
+    buttonContainer.classList.remove('active')
+
+    const backBtn = document.querySelector('#show-page .back-btn')
+
+    backBtn.addEventListener('click', () => {
+        pageContents.forEach((page) => {
+            page.classList.remove('active')
+        })
+
+        const mainPage = document.querySelector('#main-page')
+        mainPage.classList.add('active')
+    })
+
+    const deleteBtn = document.querySelector('#show-page .delete-btn')
+
+    deleteBtn.addEventListener('click', () => {
+        showDeleteConfirmation(movie);
+      })
+
+    deleteBtn.addEventListener('click', () => {
+
+        const deleteModal = document.querySelector('#delete-modal')
+        deleteModal.classList.add('active')
+
+        buttonContainer.classList.add('active')
+
+
+        // delete confirmation modal
+        const confirmBtn = document.querySelector('#delete-modal .confirm-btn')
+
+        confirmBtn.addEventListener('click', () => {
+
+            const movies = JSON.parse(localStorage.getItem('movies'))
+
+            // Find the index of the movie to be removed
+            const movieIndex = movies.findIndex(movieItem => movieItem.Title === movie.Title)
+
+            if (movieIndex !== -1) {
+                // Remove the movie from the array
+                movies.splice(movieIndex, 1)
+                localStorage.setItem('movies', JSON.stringify(movies))
+                updateMovies()
+            }
+            
+            pageContents.forEach((page) => {
+                page.classList.remove('active')
+            })
+
+            const modal = document.querySelector('#delete-modal')
+            modal.classList.remove('active')
+
+            const mainPage = document.querySelector('#main-page')
+            mainPage.classList.add('active')
+
+            
+        })
+
+        const cancelBtn = document.querySelector('#delete-modal .cancel-btn')
+
+        cancelBtn.addEventListener('click', () => {
+            buttonContainer.classList.remove('active')
+
+            const modal = document.querySelector('#delete-modal')
+            modal.classList.remove('active')
+        })
+
+        
+    })
 }

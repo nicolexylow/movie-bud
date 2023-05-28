@@ -203,7 +203,7 @@ h3 {
   width: 100%;
 }
 
-#show-page .main-content .content-container .plot p {
+#show-page .main-content .content-container .plot p, #show-page .main-content .content-container .genre p {
   text-align: left;
 }
 
@@ -224,7 +224,7 @@ h3 {
   background-color: #f4f4f4;
 }
 
-#show-page .button-container .cancel-btn {
+#show-page .button-container .back-btn {
   color: #f4f4f4;
   background-color: #c25c22;
   margin-left: 10px;
