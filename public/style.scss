@@ -18,7 +18,7 @@ body {
 }
 
 #logo {
-    width: 70%;
+    width: 200px;
     margin-bottom: 10px;
 }
 
@@ -147,10 +147,15 @@ h3 {
                 width: 120px;
                 object-fit: cover;
             }
+
+            .movie {
+                margin-bottom: 20px;
+            }
     
             h4 {
                 font-size: 13px;
                 margin-top: 3px;
+                margin-bottom: 0;
             }
         }
     }
@@ -294,6 +299,13 @@ h3 {
             background-color: #707070;
             color: #F4F4F4;
         }
+    }
+}
+
+/* TABLET SIZE */
+@media screen and (min-width: 768px) {
+    #logo {
+        text-align: left;
     }
 }
 

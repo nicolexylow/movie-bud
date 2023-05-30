@@ -17,7 +17,7 @@ body {
 }
 
 #logo {
-  width: 70%;
+  width: 200px;
   margin-bottom: 10px;
 }
 
@@ -144,8 +144,13 @@ h3 {
   object-fit: cover;
 }
 
+#main-page main .watched-movies .movie {
+  margin-bottom: 20px;
+}
+
 #main-page main .watched-movies h4 {
   margin-top: 3px;
+  margin-bottom: 0;
   font-size: 13px;
 }
 
@@ -277,6 +282,12 @@ h3 {
 #delete-modal .button-container .cancel-btn {
   color: #f4f4f4;
   background-color: #707070;
+}
+
+@media screen and (width >= 768px) {
+  #logo {
+    text-align: left;
+  }
 }
 
 /*# sourceMappingURL=index.99ca2063.css.map */
