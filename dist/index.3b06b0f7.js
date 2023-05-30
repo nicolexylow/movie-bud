@@ -605,6 +605,9 @@ form.addEventListener("submit", (event)=>{
     const rating = document.querySelector("#rating").value;
     getApiResponse(title, rating);
     form.reset();
+    // focus on the title input after the form is submitted
+    const titleInput = document.querySelector('input[name="title"]');
+    titleInput.focus();
 });
 //-------------------------------------------------------------
 // CREATE IMAGE POSTER AND TITLE 

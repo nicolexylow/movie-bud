@@ -66,6 +66,10 @@ form.addEventListener('submit', (event) => {
 
     getApiResponse(title, rating)
     form.reset()
+
+    // focus on the title input after the form is submitted
+    const titleInput = document.querySelector('input[name="title"]')
+    titleInput.focus()
 })
 
 //-------------------------------------------------------------
