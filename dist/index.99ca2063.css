@@ -84,11 +84,12 @@ h3 {
   font-size: 15px;
 }
 
-#main-page .form .input-container input {
+#main-page .form .input-container input, #main-page .form .input-container select {
   height: 25px;
   background-color: #f4f4f4;
   border: none;
   border-radius: 4px;
+  padding: 0 5px;
 }
 
 #main-page .form .input-title {
@@ -100,7 +101,7 @@ h3 {
   margin-left: 20px;
 }
 
-#main-page .form .input-rating input {
+#main-page .form .input-rating input, #main-page .form .input-rating select {
   width: 80px;
   margin-left: 4px;
 }
@@ -308,7 +309,7 @@ h3 {
 
   #main-page .form {
     width: 400px;
-    margin: 20px auto 0;
+    margin: 40px auto 0;
     padding: 10px 20px;
   }
 
@@ -321,7 +322,7 @@ h3 {
     margin-left: 26px;
   }
 
-  #main-page .form .input-rating input {
+  #main-page .form .input-rating #rating {
     width: 100px;
     margin-left: 10px;
   }
@@ -332,6 +333,7 @@ h3 {
 
   #main-page main .watched-movies {
     justify-content: space-evenly;
+    margin: 0 20px;
   }
 
   #show-page header {
@@ -381,6 +383,10 @@ h3 {
 }
 
 @media screen and (width >= 1024px) {
+  #main-page .form {
+    margin-top: 50px;
+  }
+
   #show-page main .main-content {
     width: 600px;
     padding: 15px 60px;

@@ -1,3 +1,8 @@
+// global variable shared across functions
+let totalMovies = 0
+let totalTime = 0
+let movieExists = false
+
 // everytime the page is refreshed, the movies stya on the page
 window.addEventListener('load', () => {
     reloadPage()
@@ -30,6 +35,11 @@ const getApiResponse = (movieTitle, rating) => {
                 console.log('Movie already in watched list');
             } else {
                 movies.push(data)
+
+                // update the tracker
+                totalMovies++
+                totalTime += parseInt(data.Runtime)
+                updateTracker(totalMovies, totalTime)
             }
         } 
         
@@ -52,7 +62,7 @@ form.addEventListener('submit', (event) => {
     event.preventDefault()
 
     const title = document.querySelector('input[name="title"]').value
-    const rating = document.querySelector('input[name="rating"]').value
+    const rating = document.querySelector('#rating').value
 
     getApiResponse(title, rating)
     form.reset()
@@ -69,6 +79,7 @@ const createMovie = (movie) => {
     // check to see if the movie already exists in the DOM
     let watchedMoviesArray = Array.from(watchedMoviesList);
     let movieExists = watchedMoviesArray.some((watchedMovie) => watchedMovie.getAttribute('id') === movie.imdbID);
+
 
     if (!movieExists) {
         const div = document.createElement('div')
@@ -88,7 +99,8 @@ const createMovie = (movie) => {
         div.appendChild(img)
         div.appendChild(title)
         watchedMovies.appendChild(div)
-    }
+
+    } 
 }
 
 //-------------------------------------------------------------
@@ -98,20 +110,27 @@ const reloadPage = () => {
     const movies = JSON.parse(localStorage.getItem('movies'))
     const watchedMovies = document.querySelector('.watched-movies')
     
+    // reset tracker
+    totalMovies = 0
+    totalTime = 0
+
     if (movies !== null) {
         movies.forEach((movie) => {
             createMovie(movie)
+
+            totalMovies++
+            totalTime += parseInt(movie.Runtime)
         })
     }
 
+    updateTracker(totalMovies, totalTime)
     displayShowPage()
     showPageControls()
 }
 
 //-------------------------------------------------------------
 // UPDATE THE TRACKER INFO
-let totalMovies = 0
-let totalTime = 0
+
 
 const updateTracker = (movies, time) => {
     const numMovies = document.querySelector('.num-movies p')
@@ -125,16 +144,12 @@ const updateTracker = (movies, time) => {
 // DISPLAY THE MOVIES
 
 const displayMovie = () => {
-    const numMovies = 0
     const movies = JSON.parse(localStorage.getItem('movies'))
     const movie = movies.slice(-1)[0]
 
     createMovie(movie)
+
     
-    // update the tracker
-    totalMovies++
-    totalTime += parseInt(movie.Runtime)
-    updateTracker(totalMovies, totalTime)
 }
 
 //-------------------------------------------------------------

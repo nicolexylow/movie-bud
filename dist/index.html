@@ -33,17 +33,23 @@
                 <div class="input-container">
                     <label class="input-title">
                         Title
-                        <input type="text" name="title" required="">
+                        <input type="text" name="title" placeholder="Batman" required="">
                     </label>
                     
                     <label class="input-rating">
                         Rating
-                        <input type="number" name="rating" required="">
+                        <select name="rating" id="rating" required="">
+                            <option value="" didsabled="" selected="">Select</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                        </select>
                     </label>
                 </div>
     
                 <div class="form-button-container">
-                    <button type="button" class="cancel-button">Cancel</button>
                     <button class="add-button">Add</button>
                 </div>
             </form>
