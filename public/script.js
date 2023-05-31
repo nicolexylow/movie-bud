@@ -24,29 +24,47 @@ const getApiResponse = (movieTitle, rating) => {
         }
     })
     .then((data) => {
-        // output the data to the watched movies list
-        data.Rating = rating
-        let movies = JSON.parse(localStorage.getItem('movies'))
+        // check to see if the data has a poster
+        if (data.Poster === 'N/A') {
+            const inputContainer = document.querySelector('.input-container')
+            const p = document.createElement('p')
+            p.innerHTML = `${movieTitle} is not in the database`
+            inputContainer.appendChild(p)
 
-        if (movies == null) {
-            movies = [data]
+            // removes the error message after 4 seconds
+            setTimeout(() => {
+                p.remove()
+            }, 4000)
+
+            return
+
         } else {
-            if (movies.some(movie => movie.Title === data.Title)) {
-                console.log('Movie already in watched list');
+            // output the data to the watched movies list
+            data.Rating = rating
+            let movies = JSON.parse(localStorage.getItem('movies'))
+
+            if (movies == null) {
+                movies = [data]
             } else {
-                movies.push(data)
+                if (movies.some(movie => movie.Title === data.Title)) {
+                    console.log('Movie already in watched list');
+                } else {
+                    movies.push(data)
 
-                // update the tracker
-                totalMovies++
-                totalTime += parseInt(data.Runtime)
-                updateTracker(totalMovies, totalTime)
-            }
-        } 
+                    // update the tracker
+                    totalMovies++
+                    totalTime += parseInt(data.Runtime)
+                    updateTracker(totalMovies, totalTime)
+                }
+            } 
+
+            localStorage.setItem('movies', JSON.stringify(movies))
+
+            displayMovie() 
+            displayShowPage()
+        }
         
-        localStorage.setItem('movies', JSON.stringify(movies))
-
-        displayMovie() 
-        displayShowPage()
+        
     })
     .catch(error => {
         console.error('Error:', error)
