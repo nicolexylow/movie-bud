@@ -58,6 +58,7 @@
 - Based on the Assessment 2 feedback provided by my tutor, there should be a manual way that users could input all of the required information for a movie if it doesnt exist in the API or if there is missing information (my implementation considers a response with no poster image as invalid). However, with the time constriants, this feature could not be implemented and instead returned an error message to the user.
 
 <hr>
+<br>
 
 ## Application Configurations
 ### Screen Dimensions:
@@ -72,16 +73,16 @@ Mobile - 320px
 - The documentation for implementing it can also be found on their website at https://www.omdbapi.com/
 
 <hr>
+<br>
 
 ## Deployment Procedures
 ### Installing dependencies
 This application uses Express for the web server, Sass for the styling and Parcel for bundling.
 
-Run these commands:
-- npm install express
-- npm install sass
-- npm install parcel –save-dev 
-<br>
+Run these commands: <br>
+``npm install express`` <br>
+``npm install sass`` <br>
+``npm install parcel –save-dev`` <br>
 
 Parcel will be used during development
 
@@ -90,7 +91,7 @@ Parcel will be used during development
 ### Running the server
 When in development, run this command:
 <br>
-``npm run dev``
+``npm run dev`` <br>
 Parcel automatically updates the server and no restarting is needed. <br>
 Use port 1234 (localhost:1234) in the URL adress bar
 
@@ -98,5 +99,5 @@ Use port 1234 (localhost:1234) in the URL adress bar
 
 When in deployment, run this command:
 <br>
-``npm run start``
+``npm run start`` <br>
 Use port 8888 (localhost:8888) in the URL address bar
