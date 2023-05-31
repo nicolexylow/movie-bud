@@ -89,6 +89,8 @@ h3 {
   background-color: #f4f4f4;
   border: none;
   border-radius: 4px;
+  margin-bottom: 10px;
+  margin-left: 5px;
   padding: 0 5px;
 }
 
@@ -96,24 +98,37 @@ h3 {
   text-align: center;
   background-color: pink;
   border-radius: 5px;
-  margin-bottom: 0;
+  margin-top: 0;
   margin-left: -10px;
   padding: 5px;
   font-size: 15px;
 }
 
-#main-page .form .input-title {
-  margin-bottom: 10px;
+#main-page .form .input-container .input-duration input, #main-page .form .input-container .input-rated input {
+  width: 80px;
 }
 
 #main-page .form .input-title input {
   width: 170px;
-  margin-left: 20px;
 }
 
 #main-page .form .input-rating input, #main-page .form .input-rating select {
   width: 80px;
-  margin-left: 4px;
+}
+
+#main-page .form .input-plot {
+  align-items: top;
+  flex-direction: row;
+  display: flex;
+}
+
+#main-page .form .input-plot textarea {
+  width: 80%;
+  border: none;
+  border-radius: 4px;
+  margin-left: 5px;
+  padding: 5px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
 #main-page .form .form-button-container {

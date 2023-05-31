@@ -55,7 +55,8 @@
 <br>
 
 **Invalid API Response**: <br>
-- Based on the Assessment 2 feedback provided by my tutor, there should be a manual way that users could input all of the required information for a movie if it doesnt exist in the API or if there is missing information (my implementation considers a response with no poster image as invalid). However, with the time constriants, this feature could not be implemented and instead returned an error message to the user.
+- Based on the Assessment 2 feedback provided by my tutor, there should be a manual way that users could input all of the required information for a movie if it doesnt exist in the API or if there is missing information. My implementation considers a response invalid when it doesnt exist in the API or has no poster image. 
+- If a response is invalid, an error message prompts the user to manually input all of the information so that the show page will have complete data about that movie.
 
 <hr>
 <br>
