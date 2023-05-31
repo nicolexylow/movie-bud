@@ -705,10 +705,10 @@ const displayShowPage = ()=>{
             content.innerHTML = "";
             img.src = movieInDatabase.Poster;
             img.alt = `${movieInDatabase.Title} Poster`;
-            const figcaption = document.createElement("figcaption");
-            figcaption.innerHTML = movieInDatabase.Title;
+            const h2 = document.createElement("h2");
+            h2.innerHTML = movieInDatabase.Title;
+            content.appendChild(h2);
             content.appendChild(img);
-            content.appendChild(figcaption);
             const rating = document.querySelector("#show-page .rating p");
             const genre = document.querySelector("#show-page .genre p");
             const releaseDate = document.querySelector("#show-page .release-date p");

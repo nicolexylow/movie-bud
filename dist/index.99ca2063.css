@@ -179,17 +179,17 @@ h3 {
 
 #show-page .main-content .img-title {
   text-align: center;
+  margin: 10px 0 20px;
 }
 
 #show-page .main-content .img-title img {
   width: 150px;
 }
 
-#show-page .main-content .img-title figcaption {
+#show-page .main-content .img-title h2 {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 0;
   font-size: 18px;
-  font-weight: bold;
 }
 
 #show-page .main-content .content-container {
