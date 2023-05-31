@@ -362,19 +362,21 @@ h3 {
             margin-top: 40px;
 
             .input-container {
-                padding-left: 20px;
+                padding-left: 20px;   
+
+                input, select, textarea {
+                    margin-left: 15px;
+                }
             }
 
             .input-title {
                 input {
-                    margin-left: 26px;
                     width: 200px;
                 }
             }
         
             .input-rating {
                 #rating {
-                    margin-left: 10px;
                     width: 100px;
                 }
             }
