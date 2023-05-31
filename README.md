@@ -58,7 +58,6 @@
 - Based on the Assessment 2 feedback provided by my tutor, there should be a manual way that users could input all of the required information for a movie if it doesnt exist in the API or if there is missing information (my implementation considers a response with no poster image as invalid). However, with the time constriants, this feature could not be implemented and instead returned an error message to the user.
 
 <hr>
-<br>
 
 ## Application Configurations
 ### Screen Dimensions:
@@ -73,7 +72,6 @@ Mobile - 320px
 - The documentation for implementing it can also be found on their website at https://www.omdbapi.com/
 
 <hr>
-<br>
 
 ## Deployment Procedures
 ### Installing dependencies
@@ -91,16 +89,14 @@ Parcel will be used during development
 
 ### Running the server
 When in development, run this command:
-- ``npm run dev``
 <br>
-
+``npm run dev``
 Parcel automatically updates the server and no restarting is needed. <br>
 Use port 1234 (localhost:1234) in the URL adress bar
 
 <br>
 
 When in deployment, run this command:
-- ``npm run start``
 <br>
-
+``npm run start``
 Use port 8888 (localhost:8888) in the URL address bar
