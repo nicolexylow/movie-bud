@@ -91,13 +91,17 @@ Parcel will be used during development
 ### Running the server
 When in development, run this command:
 <br>
-``npm run dev`` <br>
+``npm run dev`` 
+<br>
+
 Parcel automatically updates the server and no restarting is needed. <br>
-Use port 1234 (localhost:1234) in the URL adress bar
+Use port 1234 (localhost:1234) in the URL adress bar.
 
 <br>
 
 When in deployment, run this command:
 <br>
-``npm run start`` <br>
-Use port 8888 (localhost:8888) in the URL address bar
+``npm run start`` 
+<br>
+
+Use port 8888 (localhost:8888) in the URL address bar.
