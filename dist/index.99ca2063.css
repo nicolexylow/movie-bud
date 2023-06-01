@@ -121,6 +121,7 @@ h3 {
 #main-page .form .input-plot {
   align-items: top;
   flex-direction: row;
+  margin-bottom: 10px;
   display: flex;
 }
 
@@ -346,6 +347,10 @@ h3 {
 
   #main-page .form .input-container input, #main-page .form .input-container select, #main-page .form .input-container textarea {
     margin-left: 15px;
+  }
+
+  #main-page .form .input-container p {
+    margin-left: -20px;
   }
 
   #main-page .form .input-title input {

@@ -128,6 +128,7 @@ h3 {
             display: flex;
             flex-direction: row;
             align-items: top;
+            margin-bottom: 10px;
 
             textarea {
                 border: none;
@@ -368,6 +369,10 @@ h3 {
 
                 input, select, textarea {
                     margin-left: 15px;
+                }
+
+                p {
+                    margin-left: -20px;
                 }
             }
 
